@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %} List of questions {% endblock %}
+{% block main %}
+
+    Sort by
+    <select>
+        <option>Time</option>
+        <option>Title</option>
+        <option>Views</option>
+        <option>Vote</option>
+    </select>
+
+    Order:
+    <select>
+        <option>Ascending</option>
+        <option>Descending</option>
+    </select>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>O.N.</th>
+                    <th>Time</th>
+                    <th>Title</th>
+                    <th>View</th>
+                    <th>Vote</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in all_data %}
+
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ record["submission_time"] }}</td>
+                    <td>{{ record["title"] }}</td>
+                    <td>{{ record["view_number"] }}</td>
+                    <td>{{ record["vote_number"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+{% endblock %}
