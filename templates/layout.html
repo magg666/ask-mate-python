@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css"/>
+    <meta name="description" content="Awesome page prepared by Magda, Kali and Kacper" />
+    <meta name="keywords" content="question, answer, Codecool, ask mate" />
+    <meta name="author" content="Magda, Kali, Kacper" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Ask Mate</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="/list">All questions</a>
+        <a href="/add-question">Add question</a>
+    </nav>
+    <main>
+    {% block main %}
+
+
+
+
+    {% endblock %}
+    </main>
+    <footer>
+        <h5 id="mailto"><a href="mailto:mw23127@gmail.com">Contact</a></h5>
+    </footer>
+</body>
+</html>
