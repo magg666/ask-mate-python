@@ -35,10 +35,13 @@ def route_question_view(question_id):
     :return: page of given question
     """
     all_answers = connection.get_answers_by_id(ANSWER_FILE_PATH, question_id)
+    for answer in all_answers:
+        answer['submission_time'] = data_manager.convert_timestamp_to_date(int(answer['submission_time']))
     if request.method == 'GET':
         question = data_manager.change_view_counter(QUESTION_FILE_PATH, QUESTION_HEADER, question_id)
+        question['submission_time'] = data_manager.convert_timestamp_to_date(int(question['submission_time']))
         return render_template('question_page.html',
-                               single_question=question,
+                               question=question,
                                all_answers=all_answers)
     elif request.method == 'POST':
         data_manager.vote_question(QUESTION_FILE_PATH, QUESTION_HEADER, question_id)
@@ -97,7 +100,7 @@ def route_add_question():
         return redirect('/question/' + question_id)
     else:
         return render_template('add_question.html',
-                               form_url=url_for('add_question'))
+                               form_url=url_for('route_add_question'))
 
 
 @app.route('/question/<question_id>/edit', methods=['POST', 'GET'])
@@ -111,7 +114,7 @@ def route_edit_question(question_id):
     if request.method == 'GET':
         return render_template('add_question.html',
                                question=question,
-                               form_url=url_for('edit_question', question_id=question['id']))
+                               form_url=url_for('route_edit_question', question_id=question['id']))
     else:
         question_id = question['id']
         question_submission_time = question['submission_time']
