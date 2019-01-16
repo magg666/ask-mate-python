@@ -69,19 +69,19 @@
         <form method="post" action="{{ form_url }}" class="add_question_form">
             <section>
                 <div class="div_with_text_input">
-                    <label>Title: <br /><input type="text" class="text_input" placeholder="Title of the question goes here" name="question_title" required value="{% if record %} {{record['title']}} {% endif %}"/></label>
+                    <label>Title: <br /><input type="text" class="text_input" placeholder="Title of the question goes here" name="title" required value="{% if record %} {{record['title']}} {% endif %}"/></label>
                 </div>
             </section>
 
             <section>
                 <div class="div_with_text_input">
-                    <label>Content: <br /><textarea name="question_message" class="text_input" cols="10" rows="5" placeholder="Question message goes here" required> {% if record %}{{record['message']}} {% endif %}</textarea></label>
+                    <label>Content: <br /><textarea name="message" class="text_input" cols="10" rows="5" placeholder="Question message goes here" required> {% if record %}{{record['message']}} {% endif %}</textarea></label>
                 </div>
             </section>
 
             <section>
                 <div class="div_with_text_input">
-                    <label>Image: <br /><input type="url" name="url_address" class="text_input" placeholder="URL address goes here" value="{% if record %}{{ record['image']}} {% endif %}"/></label>
+                    <label>Image: <br /><input type="url" name="image" class="text_input" placeholder="URL address goes here" value="{% if record %}{{ record['image']}} {% endif %}"/></label>
                 </div>
             </section>
                 <div style="text-align: center;">
