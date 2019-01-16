@@ -29,14 +29,14 @@
     </tr>
     </thead>
     <tbody>
-    {% for data in all_data %}
+    {% for question in all_questions %}
     <tr>
         <td>{{ loop.index }}</td>
-        <td>{{ time }} UTC</td>
-        <td><a href="/question/{{ data['id'] }}">{{ data["title"] }}</a></td>
-        <td>{{ data["view_number"] }}</td>
-        <td>{{ data["vote_number"] }}</td>
-        <td><a href="/question/{{ data['id']}}/edit">Edit question</a></td>
+        <td>{{ question['submission_time'] }} UTC</td>
+        <td><a href="/question/{{ question['id'] }}">{{ question["title"] }}</a></td>
+        <td>{{ question["view_number"] }}</td>
+        <td>{{ question["vote_number"] }}</td>
+        <td><a href="/question/{{ question['id']}}/edit">Edit question</a></td>
     </tr>
     {% endfor %}
     </tbody>
