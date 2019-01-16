@@ -35,7 +35,21 @@ def append_data_in_file(filename, data, headers):
         writer.writerow(data)
 
 
-def get_data_by_id(filename, data_id):
+def get_question_by_id(filename, data_id):
+    """
+    Based on given id looks for Q with matching id
+    and returns it
+    :param: filename, data_id:
+    :return: question as a dict
+    """
+    with open(filename) as file:
+        reader = csv.DictReader(file)
+        for record in reader:
+            if record['id'] == data_id:
+                return record
+
+
+def get_answers_by_id(filename, data_id):
     """
     Based on given id looks for Q/A with matching id
     and returns it
@@ -44,9 +58,8 @@ def get_data_by_id(filename, data_id):
     """
     with open(filename) as file:
         reader = csv.DictReader(file)
-        for record in reader:
-            if record['id'] == data_id:
-                return record
+        all_answers = [record for record in reader if record['question_id'] == data_id]
+        return all_answers
 
 
 # rozwiązanie skompilowałam z:
@@ -64,14 +77,14 @@ def update_data_by_id(filename, headers, data_id, new_record):
     :param new_record:
     :return:
     """
-    with open(filename, 'r') as csv_file, open('output_file.csv', 'w') as output:
+    with open(filename, 'r') as csv_file, open('sample_data/output_file.csv', 'w') as output:
         reader = csv.DictReader(csv_file, fieldnames=headers)
         writer = csv.DictWriter(output, fieldnames=headers)
         for record in reader:
             if record['id'] == data_id:
-                record = {k: new_record[k] for k in record}
+                record = new_record
             writer.writerow(record)
-    shutil.move('output_file.csv', filename)
+    shutil.move('sample_data/output_file.csv', filename)
 
 
 def delete_record_by_id(filename, headers, data_id):
