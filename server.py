@@ -156,6 +156,20 @@ def edit_question(question_id):
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+@app.route('/question/<question_id>/new-answer', methods=['GET', 'POST'])
+def route_post_answer(question_id):
+    given_question = connection.get_question_by_id(connection.QUESTION_FILE_PATH, question_id)
+    if request.method == 'GET':
+        return render_template('add_answer.html', given_question=given_question, question_id=question_id)
+    else:
+        message = request.form['message']
+        image = request.form['image']
+        answer = {"id": 15, "submission_time": 1236547891, "vote_number": 0, "question_id": question_id,
+                  "message": message, "image": image}
+        connection.append_data_in_file(connection.ANSWER_FILE_PATH, answer, connection.ANSWER_HEADER)
+        return redirect('/')  # rozwiązać przekierowanie na stronę pytania
+
+
 
 if __name__ == "__main__":
     app.run(debug=True,
