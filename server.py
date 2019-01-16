@@ -147,6 +147,16 @@ def route_post_answer(question_id):
         return redirect('/question/' + question_id)
 
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return 'Page not found', 404
+
+
+@app.errorhandler(400)
+def bad_request_error(error):
+    return 'Bad request', 400
+
+
 if __name__ == "__main__":
     app.run(debug=True,
             host='0.0.0.0',
