@@ -32,7 +32,7 @@ def add_question():
 		question_url = request.form['url_address']
 
 		actual_time = data_manager.generate_timestamp()
-		id = uuid.uuid1(clock_seq = actual_time)
+		id = str(uuid.uuid1(clock_seq = actual_time))
 
 		# SAVE TO CSV FILE 
 		# IT NEEDS TO BE CHANGED TO MAGDA'S FUNCTIONS (I DIDN'T KNOW HOW TO TRANSLATE CONTENT OF THE CSV FILE TO A DICT)	
@@ -46,7 +46,7 @@ def add_question():
 							'title': question_title, 
 							'message': question_message, 
 							'image': question_url})
-			return redirect('/')
+			return redirect('/question/' + id)
 
 	# ELSE (IF METHOD IS GET) -> SHOW THE FORM TO FILL
 	else:
