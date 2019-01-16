@@ -33,13 +33,15 @@
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ record["submission_time"] }}</td>
-                    <td>{{ record["title"] }}</td>
+                    <td><a href="/question/{{ record['id'] }}">{{ record["title"] }}</a></td>
                     <td>{{ record["view_number"] }}</td>
                     <td>{{ record["vote_number"] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+
 
 
 
