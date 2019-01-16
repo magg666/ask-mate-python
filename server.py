@@ -27,26 +27,27 @@ def add_question():
 	
 	# IF METHOD IS POST (IF FORM IS SUBMITTED) -> THEN APPEND DATA IN CSV FILE
 	if request.method == 'POST':
+
 		question_title = request.form['question_title']
 		question_message = request.form['question_message']
 		question_url = request.form['url_address']
-
-		actual_time = data_manager.generate_timestamp()
-		id = str(uuid.uuid1(clock_seq = actual_time))
+		
+		question_actual_time = data_manager.generate_timestamp()
+		question_id = str(uuid.uuid1(clock_seq = question_actual_time))
 
 		# SAVE TO CSV FILE 
 		# IT NEEDS TO BE CHANGED TO MAGDA'S FUNCTIONS (I DIDN'T KNOW HOW TO TRANSLATE CONTENT OF THE CSV FILE TO A DICT)	
 		with open('sample_data/question.csv', 'a', newline='') as csvfile:
 			headers_of_the_csv_table = ['id', 'submission_time', 'view_number', 'vote_number', 'title', 'message', 'image']
 			writer = csv.DictWriter(csvfile, fieldnames = headers_of_the_csv_table)
-			writer.writerow({'id': id,
-							'submission_time': actual_time, 
+			writer.writerow({'id': question_id,
+							'submission_time': question_actual_time, 
 							'view_number': 1, #IT NEEDS TO BE CHANGED
 							'vote_number': 2, #IT NEEDS TO BE CHANGED
 							'title': question_title, 
 							'message': question_message, 
 							'image': question_url})
-			return redirect('/question/' + id)
+			return redirect('/question/' + question_id)
 
 	# ELSE (IF METHOD IS GET) -> SHOW THE FORM TO FILL
 	else:
