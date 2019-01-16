@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Post an answer{% endblock %}
+{% block main %}
+<p>{{ given_question["message"] }}</p>
+<form action="/question/{{ question_id }}/new-answer" method="post">
+    <label for="message">Your Answer</label>
+    <textarea id="message" name="message" required="required" cols="4" rows="8" placeholder="Write here your answer"
+              minlength="10"></textarea>
+
+    <label for="image">Image link</label>
+    <input id="image" name="image" type="url"/>
+    <button type="submit">POST ANSWER</button>
+
+</form>
+
+
+{% endblock %}
