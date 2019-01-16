@@ -57,30 +57,35 @@
     </style>
     <header>
         <div style="text-align: center; margin-bottom: 20px; font-weight: 700;">
+            {% if record %}
+            <span style="font-size: 60px;">Change the question</span>
+            {% else %}
             <span style="font-size: 60px;">Add question</span>
+
+            {% endif %}
         </div>
     </header>
     <article>
-        <form method="post" action="/add-question" class="add_question_form">
+        <form method="post" action="{{ form_url }}" class="add_question_form">
             <section>
                 <div class="div_with_text_input">
-                    <label>Title: <br /><input type="text" class="text_input" placeholder="Title of the question goes here" name="question_title" required /></label>
+                    <label>Title: <br /><input type="text" class="text_input" placeholder="Title of the question goes here" name="question_title" required value="{% if record %} {{record['title']}} {% endif %}"/></label>
                 </div>
             </section>
 
             <section>
                 <div class="div_with_text_input">
-                    <label>Content: <br /><textarea name="question_message" class="text_input" cols="10" rows="5" placeholder="Question message goes here" required></textarea></label>
+                    <label>Content: <br /><textarea name="question_message" class="text_input" cols="10" rows="5" placeholder="Question message goes here" required> {% if record %}{{record['message']}} {% endif %}</textarea></label>
                 </div>
             </section>
 
             <section>
                 <div class="div_with_text_input">
-                    <label>Image: <br /><input type="url" name="url_address" class="text_input" placeholder="URL address goes here" /></label>
+                    <label>Image: <br /><input type="url" name="url_address" class="text_input" placeholder="URL address goes here" value="{% if record %}{{ record['image']}} {% endif %}"/></label>
                 </div>
             </section>
                 <div style="text-align: center;">
-                    <input type="submit" value="Add question" id="submit_button" />
+                    <input type="submit" value="{% if record %} Update question {% else %} Add question{% endif %}" id="submit_button" />
                 </div>
         </form>
     </article>

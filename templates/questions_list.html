@@ -36,12 +36,13 @@
                     <td>{{ record["title"] }}</td>
                     <td>{{ record["view_number"] }}</td>
                     <td>{{ record["vote_number"] }}</td>
+                    <td><a href="/question/{{ record['id']}}/edit">Edit question</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-
+        
 
 
 {% endblock %}
