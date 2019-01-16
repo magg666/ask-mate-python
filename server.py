@@ -64,7 +64,7 @@ def route_post_answer(question_id):
 		answer = {"id": 15, "submission_time": 1236547891, "vote_number": 0, "question_id": question_id,
 				  "message": message, "image": image}
 		connection.append_data_in_file(connection.ANSWER_FILE_PATH, answer, connection.ANSWER_HEADER)
-		return redirect('/')  # rozwiązać przekierowanie na stronę pytania
+		return redirect('/')  #  rozwiązać przekierowanie na stronę pytania
 
 
 if __name__ == "__main__":
