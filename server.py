@@ -7,8 +7,6 @@ from python import data_manager
 
 app = Flask(__name__)
 
-headers = connection.QUESTION_HEADER
-
 @app.route('/')
 @app.route('/list')
 def route_list():
@@ -31,7 +29,7 @@ def add_question():
 		question_title = request.form['question_title']
 		question_message = request.form['question_message']
 		question_url = request.form['url_address']
-		
+
 		question_actual_time = data_manager.generate_timestamp()
 		question_id = str(uuid.uuid1(clock_seq = question_actual_time))
 
