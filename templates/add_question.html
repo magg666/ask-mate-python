@@ -1,0 +1,92 @@
+<!-- KACPER MADE THIS -->
+
+{% extends "layout.html" %}
+{% block title %} Add question {% endblock %}
+{% block main %}
+    <style>
+
+        .add_question_form
+        {
+            margin: auto;
+            width: 260px;
+            padding: 20px;
+            border: 1px solid #000;
+            -webkit-box-shadow: 0px 0px 73px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 73px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 73px 0px rgba(0,0,0,0.75);
+        }
+
+        .div_with_text_input
+        {
+            font-size: 25px;
+            font-weight: 700;
+            margin-top: 25px;   
+            text-align: center;
+        }
+
+        .text_input
+        {
+            width: 178px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        #submit_button
+        {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #2F9632;
+            border: 1px solid #000;
+            transition: all .3s ease-in-out;
+            opacity: 0.8;
+        }
+
+        #submit_button:hover
+        {
+            transform: scale(1.2);
+            cursor: pointer;
+            background-color: #36C23B;
+            opacity: 1;
+        }
+        
+    </style>
+    <header>
+        <div style="text-align: center; margin-bottom: 20px; font-weight: 700;">
+            {% if record %}
+            <span style="font-size: 60px;">Change the question</span>
+            {% else %}
+            <span style="font-size: 60px;">Add question</span>
+
+            {% endif %}
+        </div>
+    </header>
+    <article>
+        <form method="post" action="{{ form_url }}" class="add_question_form">
+            <section>
+                <div class="div_with_text_input">
+                    <label>Title: <br /><input type="text" class="text_input" placeholder="Title of the question goes here" name="question_title" required value="{% if record %} {{record['title']}} {% endif %}"/></label>
+                </div>
+            </section>
+
+            <section>
+                <div class="div_with_text_input">
+                    <label>Content: <br /><textarea name="question_message" class="text_input" cols="10" rows="5" placeholder="Question message goes here" required> {% if record %}{{record['message']}} {% endif %}</textarea></label>
+                </div>
+            </section>
+
+            <section>
+                <div class="div_with_text_input">
+                    <label>Image: <br /><input type="url" name="url_address" class="text_input" placeholder="URL address goes here" value="{% if record %}{{ record['image']}} {% endif %}"/></label>
+                </div>
+            </section>
+                <div style="text-align: center;">
+                    <input type="submit" value="{% if record %} Update question {% else %} Add question{% endif %}" id="submit_button" />
+                </div>
+        </form>
+    </article>
+{% endblock %}
