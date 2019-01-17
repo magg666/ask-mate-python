@@ -1,30 +1,27 @@
 {% extends "layout.html" %}
 {% block title %}Question page{% endblock %}
 {% block main %}
-<table>
-    <thead>
+<table id="add_question_table">
+    <thead class="question_table_head">
     <tr>
-        <th>Time</th>
-        <th>Title</th>
-        <th>Message</th>
-        <th>Image</th>
-        <th>Vote</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th class="add_question_table_first_table_row">Time</th>
+        <th class="add_question_table_first_table_row">Title</th>
+        <th class="add_question_table_first_table_row">Message</th>
+        <th class="add_question_table_first_table_row">Image</th>
+        <th class="add_question_table_first_table_row">Vote</th>
+        
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>{{ question['submission_time']}}</td>
-        <td>{{ question['title']}}</td>
-        <td>{{ question['message']}}</td>
+        <td class="add_question_question_cell">{{ question['submission_time']}}</td>
+        <td class="add_question_question_cell">{{ question['title']}}</td>
+        <td class="add_question_question_cell">{{ question['message']}}</td>
         {% if question['image'] %}
-        <td><img src="{{ question['image']}}" width="300px" height="200px"></td>
+        <td class="add_question_question_cell"><img src="{{ question['image']}}" width="300px" height="200px"></td>
         {% else %}
-        <td></td>
         {% endif %}
-        <td>
+        <td class="add_question_question_cell">
             <form action="/question/{{ question['id']}}" method="post">
                 <button name="vote_button" type="submit" value="plus">+</button>
                 Vote {{ question['vote_number']}}
@@ -43,30 +40,31 @@
     </tr>
     </tbody>
 </table>
+<hr>
 <table>
     <thead>
     <tr>
-        <th>Time</th>
-        <th>Answer</th>
-        <th>Image</th>
-        <th>Vote</th>
-        <th></th>
+        <th class="answer_header">Time</th>
+        <th class="answer_header">Answer</th>
+        <th class="answer_header">Image</th>
+        <th class="answer_header" style="width: 272px;">Vote</th>
+        
     </tr>
     </thead>
     <tbody>
     {% for answer in all_answers %}
     <tr>
-        <td>{{ answer['submission_time']}}</td>
-        <td>{{ answer['message']}}</td>
+        <td class="add_question_question_cell">{{ answer['submission_time']}}</td>
+        <td class="add_question_question_cell" style="width: 603px;">{{ answer['message']}}</td>
         {% if answer['image'] %}
-        <td><img src="{{ answer['image']}}" width="300px" height="200px"></td>
+        <td class="add_question_question_cell"><img src="{{ answer['image']}}" width="300px" height="200px"></td>
         {% else %}
-        <td></td>
+        
         {% endif %}
         <td>
-            <form action="/question/{{ question['id']}}/{{answer['id']}}" method="post">
+            <form action="/question/{{ question['id']}}/{{answer['id']}}" method="post" style="text-align: center;">
                 <button name="vote_button" type="submit" value="plus">+</button>
-                Vote {{ answer['vote_number']}}
+                <span class="add_question_question_cell">Vote {{ answer['vote_number']}} </span>
                 <button name="vote_button" type="submit" value="minus">-</button>
             </form>
         </td>

@@ -24,7 +24,7 @@ body
 .add_question_form
 {
     margin: auto;
-    width: 260px;
+    width: 500px;
     padding: 20px;
     border: 1px solid #000;
     background-color: #C9A9AF;
@@ -155,6 +155,43 @@ body
 .hovered_row
 {
     background-color: #C48D97;
+}
+
+#add_question_table
+{
+    width: 95%;
+    padding: 10px;
+}
+
+.question_table_head
+{
+    font-size: 22px;
+    width: 95%;
+}
+
+.add_question_table_first_table_row
+{
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #C5E5F0;
+}
+
+.add_question_question_cell
+{
+    width: 300px;
+    text-align: center; 
+    font-size: 20px; 
+    border-right: 1px dotted #000;
+    
+}
+
+.answer_header
+{
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #A2F2CE;
 }
 
 a:link {text-decoration: none; color: red;}
