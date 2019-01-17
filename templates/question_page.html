@@ -23,19 +23,19 @@
         {% endif %}
         <td class="add_question_question_cell">
             <form action="/question/{{ question['id']}}" method="post">
-                <button name="vote_button" type="submit" value="plus">+</button>
+                <button class="button" name="vote_button" type="submit" value="plus">+</button>
                 Vote {{ question['vote_number']}}
-                <button name="vote_button" type="submit" value="minus">-</button>
+                <button class="button" name="vote_button" type="submit" value="minus">-</button>
             </form>
         </td>
         <td><a href="/question/{{ question['id'] }}/new-answer">
-            <button type="button">Add answer</button>
+            <button class="button" type="button">Add answer</button>
         </a></td>
         <td><a href="/question/{{ question['id'] }}/delete">
-            <button type="button">Delete question</button>
+            <button class="button" type="button">Delete question</button>
         </a></td>
         <td><a href="/question/{{ question['id'] }}/edit">
-            <button type="button">Edit question</button>
+            <button class="button" type="button">Edit question</button>
         </a></td>
     </tr>
     </tbody>
@@ -63,13 +63,13 @@
         {% endif %}
         <td>
             <form action="/question/{{ question['id']}}/{{answer['id']}}" method="post" style="text-align: center;">
-                <button name="vote_button" type="submit" value="plus">+</button>
+                <button class="button" name="vote_button" type="submit" value="plus">+</button>
                 <span class="add_question_question_cell">Vote {{ answer['vote_number']}} </span>
-                <button name="vote_button" type="submit" value="minus">-</button>
+                <button class="button" name="vote_button" type="submit" value="minus">-</button>
             </form>
         </td>
         <td><a href="/answer/{{answer['id']}}/delete">
-            <button type="button">Delete answer</button>
+            <button class="button" type="button">Delete answer</button>
         </a></td>
     </tr>
     {% endfor %}
