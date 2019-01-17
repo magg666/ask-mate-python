@@ -2,6 +2,7 @@
 {% block title %} List of questions {% endblock %}
 {% block main %}
 
+<<<<<<< HEAD
 <form action="/list" method="get">Sort by:
     <label for="attribute">Name</label>
     <select id="attribute" name="attribute">
@@ -41,4 +42,54 @@
     {% endfor %}
     </tbody>
 </table>
+=======
+    <div id="div_with_selects">
+        Sort by
+        <select style="margin-right: 100px;">
+            <option>Time</option>
+            <option>Title</option>
+            <option>Views</option>
+            <option>Vote</option>
+        </select>
+
+        Order:
+        <select>
+            <option>Ascending</option>
+            <option>Descending</option>
+        </select>
+    </div>
+    <div id="table_div">
+        <table id="all_data_table">
+            <thead id="all_data_head_table">
+                <tr>
+                    <td class="all_data_table_cell" style="padding: 25px;">O.N.</td>
+                    <td class="all_data_table_cell">Time</td>
+                    <td class="all_data_table_cell">Title</td>
+                    <td class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">View</td>
+                    <td class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">Vote</td>
+                    <td class="all_data_table_cell">Change</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in all_data %}
+
+                <tr>
+                    <td class="all_data_table_cell padding_class">{{ loop.index }}</td>
+                    <td class="all_data_table_cell padding_class">{{ record["submission_time"] }}</td>
+                    <td class="all_data_table_cell"><a href="/question/{{ record['id'] }}" class="block_link">{{ record["title"] }}</a></td>
+                    <td class="all_data_table_cell padding_class" class="padding_class">{{ record["view_number"] }}</td>
+                    <td class="all_data_table_cell padding_class" class="padding_class">{{ record["vote_number"] }}</td>
+                    <td class="all_data_table_cell" ><a href="/question/{{ record['id']}}/edit" class="edit_link">Edit question</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        
+
+
+
+
+>>>>>>> kacper_view
 {% endblock %}
