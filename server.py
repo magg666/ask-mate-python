@@ -152,6 +152,7 @@ def route_list_sorted():
     all_data = connection.get_all_data(QUESTION_FILE_PATH)
     attribute = request.args.get('attribute')
     order = request.args.get('order')
+    all_data = util.convert_number_to_integer(all_data)
     sorted_all_data = util.sort_by_attributes(all_data, attribute, order)
     return render_template('questions_list.html',
                            all_questions=sorted_all_data)

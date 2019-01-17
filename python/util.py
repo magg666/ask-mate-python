@@ -1,16 +1,18 @@
 import data_manager
 import connection
 
-def convert_number_to_integer(all_stories):
+
+def convert_number_to_integer(all_questions):
     """
-    Function converts data for business value and estimation into integers
-    :param all_stories:all_stories - list of dict
-    :return: all_stories - list of dict
+    Function converts data
+    :param all_questions: - list of dict
+    :return: all_questions - list of dict
     """
-    for user_story in all_stories:
-        user_story['business_value'] = int(user_story['business_value'])
-        user_story['estimation'] = int(user_story['estimation'])
-    return all_stories
+    for question in all_questions:
+        question['submission_time'] = int(question['submission_time'])
+        question['view_number'] = int(question['view_number'])
+        question['vote_number'] = int(question['vote_number'])
+    return all_questions
 
 
 def sort_by_attributes(all_data, attribute, order):
