@@ -20,7 +20,7 @@ def convert_timestamp_to_date(timestamp):
     :param timestamp:
     :return: date
     """
-    return time.strftime("%a, %d %b %Y %H:%M:%S", (time.gmtime(timestamp)))
+    return time.strftime("%d %b %Y %H:%M:%S", (time.gmtime(timestamp)))
 
 
 def create_question(question_submission_time, question_id, question_view, question_vote):
