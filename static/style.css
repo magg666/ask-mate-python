@@ -81,7 +81,10 @@ body
 {
     display: flex;
     justify-content: center;
-}
+    width: 90%;
+    position: center;
+    margin: auto;
+    }
 
 
 #all_data_table
