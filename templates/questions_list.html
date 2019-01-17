@@ -2,94 +2,50 @@
 {% block title %} List of questions {% endblock %}
 {% block main %}
 
-<<<<<<< HEAD
-<form action="/list" method="get">Sort by:
-    <label for="attribute">Name</label>
-    <select id="attribute" name="attribute">
-        <option>Time</option>
-        <option>Title</option>
-        <option>Views</option>
-        <option>Vote</option>
-    </select>
-    <label for="order">Order</label>
-    <select id="order" name="order">
-        <option>Ascending</option>
-        <option>Descending</option>
-    </select>
-    <button type="submit" value="Submit">Sort</button>
-</form>
-
-<table>
-    <thead>
-    <tr>
-        <th>C.N</th>
-        <th>Time</th>
-        <th>Title</th>
-        <th>View</th>
-        <th>Vote</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for question in all_questions %}
-    <tr>
-        <td>{{ loop.index }}</td>
-        <td>{{ question['submission_time'] }} UTC</td>
-        <td><a href="/question/{{ question['id'] }}">{{ question["title"] }}</a></td>
-        <td>{{ question["view_number"] }}</td>
-        <td>{{ question["vote_number"] }}</td>
-        <td><a href="/question/{{ question['id']}}/edit">Edit question</a></td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-=======
-    <div id="div_with_selects">
-        Sort by
-        <select style="margin-right: 100px;">
+<div id="div_with_selects">
+    <form action="/list" method="get">Sort by:
+        <label for="attribute">Name</label>
+        <select id="attribute" name="attribute">
             <option>Time</option>
             <option>Title</option>
             <option>Views</option>
             <option>Vote</option>
         </select>
-
-        Order:
-        <select>
+        <label for="order">Order</label>
+        <select id="order" name="order">
             <option>Ascending</option>
             <option>Descending</option>
         </select>
-    </div>
-    <div id="table_div">
-        <table id="all_data_table">
-            <thead id="all_data_head_table">
-                <tr>
-                    <td class="all_data_table_cell" style="padding: 25px;">O.N.</td>
-                    <td class="all_data_table_cell">Time</td>
-                    <td class="all_data_table_cell">Title</td>
-                    <td class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">View</td>
-                    <td class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">Vote</td>
-                    <td class="all_data_table_cell">Change</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for record in all_data %}
+        <button type="submit" value="Submit">Sort</button>
+    </form>
+</div>
 
-                <tr>
-                    <td class="all_data_table_cell padding_class">{{ loop.index }}</td>
-                    <td class="all_data_table_cell padding_class">{{ record["submission_time"] }}</td>
-                    <td class="all_data_table_cell"><a href="/question/{{ record['id'] }}" class="block_link">{{ record["title"] }}</a></td>
-                    <td class="all_data_table_cell padding_class" class="padding_class">{{ record["view_number"] }}</td>
-                    <td class="all_data_table_cell padding_class" class="padding_class">{{ record["vote_number"] }}</td>
-                    <td class="all_data_table_cell" ><a href="/question/{{ record['id']}}/edit" class="edit_link">Edit question</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-        
-
-
-
-
->>>>>>> kacper_view
+<div id="table_div">
+    <table id="all_data_table">
+        <thead id="all_data_head_table">
+        <tr>
+            <th class="all_data_table_cell" style="padding: 25px;">C.N</th>
+            <th class="all_data_table_cell">Time</th>
+            <th class="all_data_table_cell">Title</th>
+            <th class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">View</th>
+            <th class="all_data_table_cell" style="padding-left: 15px; padding-right: 15px;">Vote</th>
+            <th class="all_data_table_cell">Change</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in all_questions %}
+        <tr>
+            <td class="all_data_table_cell padding_class">{{ loop.index }}</td>
+            <td class="all_data_table_cell padding_class">{{ question['submission_time'] }} UTC</td>
+            <td class="all_data_table_cell"><a href="/question/{{ question['id'] }}" class="block_link">{{
+                question["title"] }}</a></td>
+            <td class="all_data_table_cell padding_class" class="padding_class">{{ question["view_number"] }}</td>
+            <td class="all_data_table_cell padding_class" class="padding_class">{{ question["vote_number"] }}</td>
+            <td class="all_data_table_cell"><a href="/question/{{ question['id']}}/edit" class="edit_link">Edit
+                question</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
