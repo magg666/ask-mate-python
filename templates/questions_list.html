@@ -36,7 +36,7 @@
         {% for question in all_questions %}
         <tr>
             <td class="all_data_table_cell padding_class">{{ loop.index }}</td>
-            <td class="all_data_table_cell padding_class">{{ question['submission_time'] }} UTC</td>
+            <td class="all_data_table_cell padding_class">{{ question['submission_time'] }}</td>
             <td class="all_data_table_cell"><a href="/question/{{ question['id'] }}" class="block_link">{{
                 question["title"] }}</a></td>
             <td class="all_data_table_cell padding_class" class="padding_class">{{ question["view_number"] }}</td>

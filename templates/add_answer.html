@@ -1,17 +1,34 @@
 {% extends "layout.html" %}
-{% block title %}Post an answer{% endblock %}
+{% block title %} Add question {% endblock %}
 {% block main %}
-<p>{{ given_question["message"] }}</p>
-<form action="/question/{{ question_id }}/new-answer" method="post">
-    <label for="message">Your Answer</label>
-    <textarea id="message" name="message" required="required" cols="4" rows="8" placeholder="Write here your answer"
-              minlength="10"></textarea>
+<header>
+    <div style="text-align: center; margin-bottom: 20px; font-weight: 700;">
 
-    <label for="image">Image link</label>
-    <input id="image" name="image" type="url"/>
-    <button type="submit">POST ANSWER</button>
-
-</form>
+        <span style="font-size: 60px;">Add answer</span>
 
 
+    </div>
+</header>
+<div class="div_with_text_input">
+    <form action="/question/{{ question_id }}/new-answer" method="post">
+        <section>
+
+            <label>Answer: </label>
+            <textarea name="message" class="text_input" cols="10" rows="5"
+                      placeholder="Answer message goes here"></textarea>
+
+        </section>
+
+        <section>
+
+            <label>Image: </label>
+            <input type="url" name="image" class="text_input" placeholder="URL address goes here"
+            />
+
+        </section>
+        <div style="text-align: center;">
+            <input type="submit" id="submit_button"/>
+        </div>
+    </form>
+</div>
 {% endblock %}
