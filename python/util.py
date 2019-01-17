@@ -1,5 +1,3 @@
-import data_manager
-import connection
 
 
 def convert_number_to_integer(all_questions):
