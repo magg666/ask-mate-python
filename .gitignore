@@ -107,3 +107,8 @@ sample_data/answer.csv
 
 sample_data/question.csv
 
+package-lock.json
+
+cache_database/
+
+node_modules/
