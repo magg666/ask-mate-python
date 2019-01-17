@@ -13,21 +13,21 @@ def convert_number_to_integer(all_stories):
     return all_stories
 
 
-def sort_by_attributes(all_stories, attribute, order):
+def sort_by_attributes(all_data, attribute, order):
     """
     Function sorts data based on given parameters
-    :param all_stories: List of dict
+    :param all_data: List of dict
     :param attribute: string
     :param order:
-    :return: new_all_stories - list of dict
+    :return: new_all_data - list of dict
     """
     sort_order = None
     if order == 'desc':
         sort_order = True
     elif order == 'asc':
         sort_order = False
-    new_all_stories = sorted(all_stories, key=lambda k: k[attribute], reverse=sort_order)
-    return new_all_stories
+    new_all_data = sorted(all_data, key=lambda k: k[attribute], reverse=sort_order)
+    return new_all_data
 
 # pobieranie z formularzy od użytkownika mamy w nastepujących miejscach:
 # 1. dodawanie pytania

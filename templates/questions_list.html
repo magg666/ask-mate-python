@@ -3,18 +3,18 @@
 {% block main %}
 
 <div id="div_with_selects">
-    <form action="/list" method="get">Sort by:
+    <form action="/list/sorted" method="get">Sort by:
         <label for="attribute">Name</label>
         <select id="attribute" name="attribute">
-            <option>Time</option>
-            <option>Title</option>
-            <option>Views</option>
-            <option>Vote</option>
+            <option value="submission_time">Time</option>
+            <option value="title">Title</option>
+            <option value="view_number">Views</option>
+            <option value="vote_number">Vote</option>
         </select>
         <label for="order">Order</label>
         <select id="order" name="order">
-            <option>Ascending</option>
-            <option>Descending</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
         </select>
         <button type="submit" value="Submit">Sort</button>
     </form>

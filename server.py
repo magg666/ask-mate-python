@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for
 import uuid
 import os
-from python import data_manager, connection
+from python import data_manager, connection, util
 
 QUESTION_FILE_PATH = os.getenv('DATA_FILE_PATH') if 'DATA_FILE_PATH' in os.environ else 'sample_data/question.csv'
 ANSWER_FILE_PATH = os.getenv('DATA_FILE_PATH') if 'DATA_FILE_PATH' in os.environ else 'sample_data/answer.csv'
@@ -147,13 +147,26 @@ def route_post_answer(question_id):
         return redirect('/question/' + question_id)
 
 
+@app.route('/list/sorted')
+def route_list_sorted():
+    all_data = connection.get_all_data(QUESTION_FILE_PATH)
+    attribute = request.args.get('attribute')
+    order = request.args.get('order')
+    sorted_all_data = util.sort_by_attributes(all_data, attribute, order)
+    return render_template('questions_list.html',
+                           all_questions=sorted_all_data)
+
+    # for question in all_data:
+    #     question['submission_time'] = data_manager.convert_timestamp_to_date(int(question['submission_time']))
+
+
 @app.errorhandler(404)
-def not_found_error(error):
+def route_not_found_error(error):
     return 'Page not found', 404
 
 
 @app.errorhandler(400)
-def bad_request_error(error):
+def route_bad_request_error(error):
     return 'Bad request', 400
 
 
