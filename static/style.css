@@ -3,9 +3,10 @@ body
     margin: 0;
     background-image: url(background.png);
     font-family: 'Ubuntu', sans-serif;
+    background-attachment: fixed;
 }
 
-.header
+header
 {
     display: block;
     margin-top: 30px;
@@ -19,6 +20,30 @@ body
         1px -1px 0 #000,
         -1px -1px 0 #000,
         -1px 1px 0 #000;
+}
+
+nav {
+    height: 55px;
+    font-weight: 700;
+    color: black;
+
+}
+
+nav a {
+    display: block;
+    float: left;
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 20px 10px 10px 10px;
+    text-decoration: none;
+    color: black;
+    letter-spacing: 2px;
+    background-color: coral;
+}
+
+nav a:hover {
+    background-color: brown;
+    color: white;
 }
 
 .add_question_form
@@ -90,7 +115,7 @@ body
 #all_data_table
 {
     font-size: 25px;
-    background-color: #C9A9AF;
+    background-color: rgba(201,169,175,0.5);
     -webkit-box-shadow: 0px 0px 77px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 77px 5px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 77px 5px rgba(0,0,0,0.75);
@@ -137,10 +162,10 @@ body
 
 #clock
 {
-    text-align: center;
-    margin-top: 30px;
+    text-align: right;
+    margin-top: 50px;
     padding-top: 30px;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 700;
     color: #D13B56;
     letter-spacing: 5px;
@@ -157,7 +182,58 @@ body
     background-color: #C48D97;
 }
 
-a:link {text-decoration: none; color: red;}
-a:visited {text-decoration: none; color: red;}
-a:hover {text-decoration: underline; color: #CC0000;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: underline; color: darkmagenta;}
 a:active {text-decoration: none; color: green;}
+
+
+.sort_label {
+    font-family: sans-serif;
+    font-size: 24px ;
+    padding-left: 1.2em;
+}
+
+.sorting {
+    display: inline;
+    width: 200px;
+    background-color: floralwhite;
+
+
+}
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid coral;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 24px;
+    white-space: pre-line;
+    font-family: sans-serif;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: coral;
+    border-radius: 15px;
+
+}
+
+.button:hover {
+    background-color: brown;
+    color: white;
+}
+
+.button:active, .submit_button:active {
+    background-color: beige;
+    transform: translateY(4px);
+}
